@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <h1>Alerts</h1>
+</header>
+<sction>
+    <div class="list-group mb-3">
+        {% for alert in {{ alerts }} %}
+            <div class="list-group-item">
+                <h4>Alert</h4>
+                <p>
+                    <a href="{{alert.item.url}}">{{alert.item.url}}</a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- usage of url_for is part of flask but can be used with jinja
+     it takes blueprint name (items), then a function inside(new_item) -->
+    <a class="btn btn-primary" href="{{ url_for('alerts.new_alert') }}">Create New</a>
+</sction>
+
+{% endblock %}
